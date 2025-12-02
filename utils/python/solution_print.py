@@ -1,12 +1,12 @@
 import time
-from typing import Callable, Any
+from typing import Callable
 
 GREEN = '\033[92m'
 CYAN = '\033[96m'
 YELLOW = '\033[93m'
 RESET = '\033[0m'
 
-def solution_print(part: int, solution_func: Callable[[], Any]) -> None:
+def solution_print(part: int, solution_func: Callable[[], int | str]) -> None:
     part_string = ''
 
     match part:
