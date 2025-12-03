@@ -18,5 +18,9 @@ if __name__ == '__main__':
         module = importlib.import_module(f'day_{day}.python.main')
         module.run()
     except Exception as e:
-        print(f'Error running day {day}: {e}')
+        import traceback
+        print(f'\033[91mError running day {day}:\033[0m')
+        print('\033[91m', end='')
+        traceback.print_exc()
+        print('\033[0m', end='')
         sys.exit(1)
