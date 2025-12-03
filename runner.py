@@ -1,5 +1,6 @@
 import sys
-from day_1.python.main import run as day_1
+import importlib
+from pathlib import Path
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
@@ -7,9 +8,15 @@ if __name__ == '__main__':
         sys.exit(1)
 
     day = sys.argv[1]
+    day_dir = Path(__file__).parent / f'day_{day}' / 'python'
 
-    match day:
-        case '1':
-            day_1()
-        case _:
-            print('No solution for this day.')
+    if not day_dir.exists() or not (day_dir / 'main.py').exists():
+        print(f'No solution for day {day}.')
+        sys.exit(1)
+
+    try:
+        module = importlib.import_module(f'day_{day}.python.main')
+        module.run()
+    except Exception as e:
+        print(f'Error running day {day}: {e}')
+        sys.exit(1)
