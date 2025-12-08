@@ -3,3 +3,4 @@ __pycache__
 .vscode
 node_modules
 input.txt
+example_input.txt
